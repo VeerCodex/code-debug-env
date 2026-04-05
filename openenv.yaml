@@ -1,0 +1,63 @@
+name: code-debug-env
+version: "1.0.0"
+description: "A reinforcement learning environment where an AI agent debugs Python code across easy, medium, and hard difficulty levels."
+author: "Stack Overflow Survivors"
+
+environment:
+  type: code-debugging
+  language: python
+
+action_space:
+  type: object
+  properties:
+    fixed_code:
+      type: string
+      description: "The corrected Python code submitted by the agent"
+
+observation_space:
+  type: object
+  properties:
+    buggy_code:
+      type: string
+      description: "The buggy Python code to be fixed"
+    task_description:
+      type: string
+      description: "Description of what the function should do"
+    task_id:
+      type: integer
+      description: "ID of the current task"
+    attempts:
+      type: integer
+      description: "Number of attempts made so far"
+
+tasks:
+  - id: 1
+    name: "Fix Addition Bug"
+    difficulty: easy
+    description: "Fix the function so it correctly returns the sum of two numbers"
+    max_steps: 5
+
+  - id: 2
+    name: "Fix Max Finder Bug"
+    difficulty: medium
+    description: "Fix the function so it correctly returns the largest number in a list"
+    max_steps: 5
+
+  - id: 3
+    name: "Fix Fibonacci Bug"
+    difficulty: hard
+    description: "Fix the recursive function so it correctly returns the nth Fibonacci number"
+    max_steps: 5
+
+reward:
+  min: 0.0
+  max: 1.0
+  description: "Score based on correctness and number of attempts"
+
+endpoints:
+  reset: "/reset"
+  step: "/step"
+  state: "/state"
+  tasks: "/tasks"
+  grader: "/grader"
+  baseline: "/baseline"
