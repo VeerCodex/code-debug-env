@@ -1,0 +1,8 @@
+[project]
+name = "code-debug-env"
+version = "1.0.0"
+description = "RL environment for AI agents to debug Python code"
+requires-python = ">=3.9"
+
+[tool.openenv]
+env_id = "code-debug-env"
