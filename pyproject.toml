@@ -1,8 +1,15 @@
 [project]
 name = "code-debug-env"
 version = "1.0.0"
-description = "RL environment for AI agents to debug Python code"
+description = "RL environment for debugging Python code"
 requires-python = ">=3.9"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "requests",
+]
 
-[tool.openenv]
-env_id = "code-debug-env"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
